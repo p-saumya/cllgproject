@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TheBookSeekers</title>
+    <link rel="shortcut icon" href="ShortLogo.jpeg">
+    <meta name="viewport" content="initial-scale=1.0,userscalabe=yes,min-scale=0.5,max-scale=5.0,width=device-width">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="ALLCSSFILES/style.css" type="text/css">
+    <!-- Include your external JavaScript file -->
+    <script src="script.js"></script>
+
+</head>
+<body style="overflow-x: hidden;">
+    <!-- Target anchor for the back to top button -->
+    <a id="top" href="#"></a>
+
+    <!-- Back to top button -->
+    <a href="#top" class="back-to-top" title="Go to top">&#8679;</a>
+    <script>
+        window.addEventListener('scroll', function () {
+          var backToTopButton = document.querySelector('.back-to-top');
+          if (window.scrollY > 0) {
+            backToTopButton.style.display = 'block'; 
+          } else {
+            backToTopButton.style.display = 'none';
+          }
+        });
+      </script>
+
+
+
+    <div id="announcement-container">
+        <div id="announcement-content">
+            <div class="announcement">
+                <img src="https://cdn.shopify.com/s/files/1/0302/6927/6291/files/Layer_6.png?v=1689339831" style="margin-right: 5px; width: 30px; height: 22px;">
+                <span>Original Books <span style="color: black;">only</span></span>
+            </div>
+            <div class="announcement">
+                <img src="https://cdn.shopify.com/s/files/1/0302/6927/6291/files/Layer_7.png?v=1689339831" style="margin-right:5px;
+                width: 30px; height: 22px;">
+                <span>Free Delivery <span style="color: black;"> on orders above Rs.499</span></span>
+            </div>
+            <div class="announcement">
+                <img src="https://cdn.shopify.com/s/files/1/0302/6927/6291/files/Layer_6.png?v=1689339831" style="margin-right: 5px;
+                width: 30px; height: 22px;">
+                <span>Original Books <span style="color: black;">only</span></span>
+            </div>
+            <!-- Repeat the same content for continuous scrolling -->
+            <div class="announcement">
+                <img src="https://cdn.shopify.com/s/files/1/0302/6927/6291/files/Layer_7.png?v=1689339831" style="margin-right:5px;
+                width: 30px; height: 22px;">
+                <span>Free Delivery <span style="color: black;"> on orders above Rs.499</span></span>
+            </div>
+            <div class="announcement">
+                <img src="https://cdn.shopify.com/s/files/1/0302/6927/6291/files/Layer_6.png?v=1689339831" style="margin-right: 5px;width: 30px; height: 22px;">
+                <span>Original Books <span style="color: black;">only</span></span>
+            </div>
+            <div class="announcement">
+                <img src="https://cdn.shopify.com/s/files/1/0302/6927/6291/files/Layer_7.png?v=1689339831" style="margin-right:5px;width: 30px; height: 22px;">
+                <span>Free Delivery <span style="color: black;"> on orders above Rs.499</span></span>
+            </div>
+            <div class="announcement">
+                <img src="https://cdn.shopify.com/s/files/1/0302/6927/6291/files/Layer_6.png?v=1689339831" style="margin-right: 5px;width: 30px; height: 22px;">
+                <span>Original Books <span style="color: black;">only</span></span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- For logo, searchbox, profile, cart = -->
+    <div class="fixed-on-scroll">
+    <div class="d-flex flex-column flex-xl-row">
+
+        <!-- for Logo ----  -->
+        <div class="p-1 col-md-4">
+            <a href="MainFile.html"><img src="Logo7.png" style="width: 275px;" class="thumbnail ml-0" alternate-text="Logo"></a>
+        </div>
+
+        <!-- for searchbar ----- -->
+        <div class="p-1 col-md-5 mt-5 ml-md-2 d-flex align-items-center">
+            <form action="MainFile.html" method="GET">
+                <input type="text" class="control is-expanded" placeholder="Search By Title, Author or Publisher" id="searchBar" oninput="highlightText()" aria-label="Search">
+                <button class="btn btn-outline-secondary" style="border-radius: 20px;" type="submit">
+                <img src="https://rails-assets-us.bookshop.org/ds/images/search.179df46915b36d0fba2c0ab8f704467e37bb6558.svg"
+                title="search" style="height:28px;" alt="search"></button>
+            </form>
+        </div>
+
+        <!-- for signup profile , applying cart-->
+        <div class="p-1 col-md-3 d-flex align-items-center">
+            <button class="btn">
+                <a href="Signup.html">
+                    <img class="mt-sm-5 ml-5" style="height: 40px;width: 40px; margin-left: 190px;" src="profilelogo.jpg" alt="account" id="profileImage">
+                    <span class="profile-initials" id="initials"></span>
+                </a>
+            </button>
+
+            <!-- for applying cart  -->
+            <button class="btn">
+                <a href="cart.html">
+                    <img class="mt-sm-5 ml-1" style="height: 40px;width: 40px;" src="https://rails-assets-us.bookshop.org/ds/images/basket.76e8fe7b84404cf9232df8188db62fd33e0c6453.svg" alt="cart">
+                </a>
+            </button>    
+        </div>
+    </div></div>
+
+    <!-- Script For Profile Account --> 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        // Retrieve user's first and last name from localStorage
+        var firstName = localStorage.getItem('firstName');
+        var lastName = localStorage.getItem('lastName');
+
+        console.log('First Name:', firstName);
+        console.log('Last Name:', lastName);
+
+        if (firstName && lastName) {
+            var initials = (firstName.charAt(0) + lastName.charAt(0)).toUpperCase();
+            // Display initials in the logo
+            document.getElementById('initials').innerText = initials;
+            // Hide the profile logo image
+            document.getElementById('profileImage').style.display = "none";
+        } else {
+            document.getElementById('profileImage').style.display = "inline-block";
+            // Hide the initials
+            document.getElementById('initials').style.display = "none";
+        }
+        // Clear the first name and last name from localStorage
+        localStorage.removeItem('firstName');
+        localStorage.removeItem('lastName');
+    });
+    </script>
+
+    <!-- For navigation bar = -->
+    <div class="fixed-on-scroll"  data-bs-spy="scroll">
+        <nav class="navbar navbar-expand-xl navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#linktocollap"> 
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse navmain" id="linktocollap">
+                <ul class="navbar-nav nav-tabs justify-content-between w-100">
+                    <li class="nav-item"><a href="MainFile.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#sectiondiscount" class="nav-link">Special Offers</a></li>
+                    <li class="nav-item"><a href="#section1" class="nav-link">New Arrivals</a></li>
+                    <li class="nav-item"><a href="#section2" class="nav-link">Best Sellers</a></li>
+                    <li class="nav-item"><a href="#section3" class="nav-link">Fiction</a></li>
+                    <li class="nav-item"><a href="#section4" class="nav-link">Non Fiction</a></li>
+                    <li class="nav-item"><a href="#section5" class="nav-link">YA</a></li>
+                    <li class="nav-item"><a href="#section6" class="nav-link">Kids</a></li>
+                </ul>
+            </div>
+        </div>
+        </nav>
+    </div>
+    <div class="col-sm-12" style="background-color: #FFF3EB; padding: auto; text-align: center; text-indent: bold; z-index: 9998;">
+        <span class="mt-5" style="color: purple; font-size: large; font-family: sans-serif;"><b>12,57,559 has been delivered</b> and counting..</span>
+    </div>
+
+    <!-- For main carousel slider = -->
+    <div id="demo" class="carousel slide" data-bs-ride="carousel"  data-interval="100">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#demo" data-bs-slide-to="0" class="active bg-dark" type="none"><button></button></li>
+            <li data-bs-target="#demo" data-bs-slide-to="1" class="bg-dark" type="none"><button></button></li>
+            <li data-bs-target="#demo" data-bs-slide-to="2" class="bg-dark" type="none"><button></button></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active slides"><a href="https://www.instagram.com/seekersbooks/p/BmPL4YlhcXI/"><img src="C3.png" alt="Image 1"></a></div>
+            <div class="carousel-item slides"><a href="OneBookDisplay.html"><img align="center" src="C1.jpg" alt="Image 2"></a></div>
+            <div class="carousel-item slides"><a href="#"><img src="C2.jpg" href="#" alt="Image 3"></a></div>
+        </div>
+        <button class="carousel-control-prev" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!-- For getting the special offers -->
+    <div class="mt-5 container" style="display: block;" id="sectiondiscount">
+        <h3><span class="text-dark" style="font-family:Georgia,'Times New Roman', Times, serif; font-weight: bold;">Special Offers</span></h3>
+    </div>
+    <div class="container">
+        <ul class="nav nav-underline lightdeal">
+            <li class="nav-item "><a href="#" class="nav-link active" style="color: #c17130;">Featured product</a></li>
+        </ul>
+    </div>
+    <div id="carousee" class="carousel slide" data-bs-ride="false" style="padding: 100px;">
+        <div class="carousel-inner">
+            <div class="carousel-item active slides">
+                <div class="row">
+                <div class="divitem1 col-xl-4 position-relative">
+                    <a href="#" class="divitem1book1" title="I fell in love with hope (paperback)">
+                    <img src="Book1.jpg" alt="Image 1"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">I fell in love with hope (paperback)</a></h3>
+                    <h4>₹ 190 </h4>
+                    <span class="price-wrapper">₹500.00</span>
+                    <div class="discount-tag">62% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem2 col-xl-4 position-relative">
+                    <a href="#" class="divitem2book2" title="The Mountain Is You: Transforming Self (paperback )">
+                    <img src="Book2.jpg" alt="Image 2"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">The Mountain Is You: Transforming Self (paperback )</a></h3><h4>₹ 160 </h4>
+                    <span class="price-wrapper">₹400.00</span>
+                    <div class="discount-tag">60% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem3 col-xl-3 position-relative">
+                    <a href="#" class="divitem3book3" title="curse of true love , ballad never after , once upon a broken heart (trio)">
+                    <img src="Book3.jpg" alt="Image 3"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">curse of true love , ballad never after , once upon a broken heart (trio)</a></h3><h4>₹ 599 </h4>
+                    <span class="price-wrapper">₹1,200.00</span>
+                    <div class="discount-tag">51% off</div> <!-- Discount tag -->
+                </div></div>
+            </div>
+            <div class="carousel-item slides">
+                <div class="row">
+                <div class="divitem1 col-xl-4 position-relative">
+                    <a href="#" class="divitem1book1" title="Man’s Search For Meaning: The classic tribute to hope from the Holocaust (paperback)"><img src="Book4.jpg" alt="Image 1"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Man’s Search For Meaning: The classic tribute to hope from the Holocaust (paperback)</a></h3>
+                    <h4>₹ 150.00 </h4>
+                    <span class="price-wrapper">₹300.00</span>
+                    <div class="discount-tag">50% off</div> 
+                </div>
+                <div class="divitem2 col-xl-4 position-relative"> 
+                    <a href="#" class="divitem2book2" title="Harry Potter Box Set: The Complete Collection (Set of 7 Volumes)">
+                    <img src="Book5.jpg" alt="Image 2"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Harry Potter Box Set: The Complete Collection (Set of 7 Volumes)</a></h3><h4>₹ 1,499.00 </h4>
+                    <span class="price-wrapper">₹3,300.00</span>
+                    <div class="discount-tag">55% off</div> 
+                </div>
+                <div class="divitem3 col-xl-3 position-relative">
+                    <a href="#" class="divitem3book3" title="The Body Keeps The Score (paperback)">
+                    <img src="Book6.jpg" alt="Image 3"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">The Body Keeps The Score (paperback)</a></h3><h4>₹ 220 </h4>
+                    <span class="price-wrapper">₹ 450.00</span>
+                    <div class="discount-tag">51% off</div> 
+                </div>
+            </div> 
+        </div>
+        </div>
+        <button class="carousel-control-prev" data-bs-target="#carousee" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark"></span>
+        </button>
+        <button class="carousel-control-next" data-bs-target="#carousee" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark"></span>
+        </button> 
+    </div>
+
+    <!-- For applying newest arrivals carousels  -->
+    <div class="mt-3 container" style="display: block;" id="section1">
+        <h3><span class="text-dark" style="font-family:Georgia,'Times New Roman', Times, serif; font-weight: bold;">Newest Arrivals</span></h3>
+    </div>
+    <div class="container">
+        <ul class="nav nav-underline lightdeal">
+            <li class="nav-item "><a href="#" class="nav-link active" style="color: #c17130;">Featured product</a></li>
+        </ul>
+    </div>
+    <div id="carouse2" class="carousel slide" data-bs-ride="carousel" style="padding: 100px;" data-bs-interval="2000">
+        <div class="carousel-inner">
+            <div class="carousel-item active slides">
+                <div class="row">
+                <div class="divitem1 col-lg-4 position-relative">
+                    <a href="#" class="divitem1book1" title="I fell in love with hope (paperback)">
+                    <img src="Book7.jpg" alt="Image 1" style="height: 350px;width: 350px;"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Ugly Love: A Novel by Colleen Hoover</a></h3>
+                    <h4>₹ 220 </h4>
+                    <span class="price-wrapper">₹250.00</span>
+                    <div class="discount-tag">12% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem2 col-lg-4 position-relative">
+                    <a href="#" class="divitem2book2" title="Show your work - Austin Kleon">
+                    <img src="Book8.jpg" alt="Image 2" style="height: 350px; width: 350px;;"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Show your work - Austin Kleon</a></h3><h4>₹ 180 </h4>
+                    <span class="price-wrapper">₹900.00</span>
+                    <div class="discount-tag">80% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem3 col-lg-3 position-relative">
+                    <a href="#" class="divitem3book3" title="Khaled Hosseini Collection 3 Books Set (And the Mountains Echoed, A Thousand Splendid Suns, The Kite Runner)">
+                    <img src="Book9.jpg" alt="Image 3"  style="height: 350px; width: 350px;"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Khaled Hosseini Collection 3 Books Set (And the Mountains Echoed, A Thousand Splendid Suns, The Kite Runner)</a></h3><h4>₹ 499 </h4>
+                    <span class="price-wrapper">₹ 999.00</span>
+                    <div class="discount-tag">50% off</div> <!-- Discount tag -->
+                </div>
+                </div>
+                <div class="row">
+                    <div class="divitem1 col-lg-4 position-relative">
+                        <a href="#" class="divitem1book1" title="The Personal MBA (paperback)">
+                        <img src="Book10.jpg" alt="Image 1" style="height: 350px;width: 350px;"></a>
+                        <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">The Personal MBA (paperback)</a></h3>
+                        <h4>₹ 250 </h4>
+                        <span class="price-wrapper">₹500.00</span>
+                        <div class="discount-tag">50% off</div> <!-- Discount tag -->
+                    </div>
+                    <div class="divitem2 col-lg-4 position-relative">
+                        <a href="#" class="divitem2book2" title="Art of being alone (paperback)">
+                        <img src="Book11.jpg" alt="Image 2" style="height: 350px; width: 350px;;"></a>
+                        <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Art of being alone (paperback)</a></h3><h4>₹ 160 </h4>
+                        <span class="price-wrapper">₹500.00</span>
+                        <div class="discount-tag">68% off</div> <!-- Discount tag -->
+                    </div>
+                    <div class="divitem3 col-lg-3 position-relative">
+                        <a href="#" class="divitem3book3" title="The long game - elena armas">
+                        <img src="Book12.jpg" alt="Image 3" style="height: 350px; width: 350px;;"></a>
+                        <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">The long game - elena armas</a></h3><h4>₹ 220 </h4>
+                        <span class="price-wrapper">₹ 400.00</span>
+                        <div class="discount-tag">45% off</div> <!-- Discount tag -->
+                    </div>
+                </div>
+            </div>             <!-- first slide completed  -->
+            <div class="carousel-item slides">
+                <div class="row">
+                <div class="divitem1 col-lg-4 position-relative">
+                    <a href="#" class="divitem1book1" title="Agatha Christie Box Set: And Then There Were None, Murder on the Orient Express, The Murder of Roger Ackroyd">
+                    <img src="Book13.jpg" alt="Image 1" style="height: 350px;width: 350px;"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Agatha Christie Box Set: And Then There Were None, Murder on the Orient Express, The Murder of Roger Ackroyd</a></h3>
+                    <h4>₹ 450 </h4>
+                    <span class="price-wrapper">₹700.00</span>
+                    <div class="discount-tag">36% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem2 col-lg-4 position-relative">
+                    <a href="#" class="divitem2book2" title="Ikigai: The Japanese secret to a long and happy life (hardcover)">
+                    <img src="Book14.jpg" alt="Image 2" style="height: 350px; width: 350px;;"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Ikigai: The Japanese secret to a long and happy life (hardcover)</a></h3><h4>₹ 160 </h4>
+                    <span class="price-wrapper">₹300.00</span>
+                    <div class="discount-tag">47% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem3 col-lg-3 position-relative">
+                    <a href="#" class="divitem3book3" title="Manifest ( hardcover)">
+                    <img src="Book15.jpg" alt="Image 3"  style="height: 350px; width: 350px;"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Manifest ( hardcover)</a></h3><h4>₹ 220 </h4>
+                    <span class="price-wrapper">₹ 400.00</span>
+                    <div class="discount-tag">45% off</div> <!-- Discount tag -->
+                </div>
+                </div>
+                <div class="row">
+                    <div class="divitem1 col-lg-4 position-relative">
+                        <a href="#" class="divitem1book1" title="Talk like ted (paperback)">
+                        <img src="Book16.jpg" alt="Image 1" style="height: 350px;width: 350px;"></a>
+                        <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Talk like ted (paperback)</a></h3>
+                        <h4>₹ 220 </h4>
+                        <span class="price-wrapper">₹400.00</span>
+                        <div class="discount-tag">45% off</div> <!-- Discount tag -->
+                    </div>
+                    <div class="divitem2 col-lg-4 position-relative">
+                        <a href="#" class="divitem2book2" title="Atomic Habits: The life-changing million (paperback)">
+                        <img src="Book17.jpg" alt="Image 2" style="height: 350px; width: 350px;;"></a>
+                        <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Atomic Habits: The life-changing million (paperback)</a></h3><h4>₹ 170 </h4>
+                        <span class="price-wrapper">₹400.00</span>
+                        <div class="discount-tag">58% off</div> <!-- Discount tag -->
+                    </div>
+                    <div class="divitem3 col-lg-3 position-relative">
+                        <a href="#" class="divitem3book3" title="Kill Joy">
+                        <img src="Book18.jpg" alt="Image 3" style="height: 350px; width: 350px;;"></a>
+                        <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Kill Joy</a></h3><h4>₹ 160 </h4>
+                        <span class="price-wrapper">₹ 300.00</span>
+                        <div class="discount-tag">47% off</div> <!-- Discount tag -->
+                    </div>
+                </div>
+            </div>     <!--  second slide completed -->
+        </div>   <!-- carousel inner completed  -->
+                <button class="carousel-control-prev" data-bs-target="#carouse2" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-dark" style="height: 50px; width:50px;border-radius: 30px;"></span>
+                </button>
+                <button class="carousel-control-next" data-bs-target="#carouse2" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-dark"  style="height:50px;width:50px;border-radius:30px;"></span>
+                </button> 
+        </div>   <!-- carouse2 completed -->
+
+    <!-- For applying best sellers carousels  -->
+    <div class="mt-3 container" style="display: block;" id="section2">
+        <h2><span class="text-dark" style="font-family:Georgia,'Times New Roman', Times, serif; font-weight: bold;">Best Sellers</span></h2>
+    </div>
+    <div class="container">
+        <ul class="nav nav-underline lightdeal">
+            <li class="nav-item "><a href="#" class="nav-link active" style="color: #c17130;">Featured product</a></li>
+        </ul>
+    </div>
+    <div id="carouse3" class="carousel slide" data-bs-ride="carousel" style="padding: 100px;" data-bs-interval="2000">
+        <div class="carousel-inner">
+            <div class="carousel-item active slides">
+                <div class="row">
+                <div class="divitem1 col-lg-2 position-relative">
+                    <a href="#" class="divitem1book1" title="psychology of money ( paperback )">
+                    <img src="Book19.png" alt="Image 1"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">psychology of money ( paperback )</a></h3>
+                    <h4>₹ 160 </h4>
+                    <span class="price-wrapper">₹250.00</span>
+                    <div class="discount-tag">36% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem2 col-lg-2 position-relative">
+                    <a href="#" class="divitem2book2" title="It Ends With Us: A Novel ( paperback )">
+                    <img src="Book20.jpg" alt="Image 2"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">It Ends With Us: A Novel ( paperback )</a></h3><h4>₹ 180 </h4>
+                    <span class="price-wrapper">₹400.00</span>
+                    <div class="discount-tag">55% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem3 col-lg-2 position-relative">
+                    <a href="#" class="divitem3book3" title="It Starts With Us: A Novel ( paperback )">
+                    <img src="Book21.jpg" alt="Image 3"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">It Ends With Us: A Novel ( paperback )</a></h3><h4>₹ 280 </h4>
+                    <span class="price-wrapper">₹ 300.00</span>
+                    <div class="discount-tag">20% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem3 col-lg-2 position-relative">
+                    <a href="#" class="divitem3book3" title="Get Epic Shit Done (paperback)">
+                    <img src="Book22.jpg" alt="Image 3"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Get Epic Shit Done( paperback )</a></h3><h4>₹ 160 </h4>
+                    <span class="price-wrapper">₹ 400.00</span>
+                    <div class="discount-tag">60% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem3 col-lg-2 position-relative">
+                    <a href="#" class="divitem3book3" title="The Secret By Rhonda Byrne">
+                    <img src="Book23.jpg" alt="Image 3"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">The Secret By Rhonda Byrne</a></h3><h4>₹ 150 </h4>
+                    <span class="price-wrapper">₹ 220.00</span>
+                    <div class="discount-tag">32% off</div> <!-- Discount tag -->
+                </div>
+                </div>
+            </div>
+            <div class="carousel-item slides">
+                <div class="row">
+                <div class="divitem1 col-lg-2 position-relative">
+                    <a href="#" class="divitem1book1" title="The alchemist">
+                    <img src="Book24.jpg" alt="Image 1"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">The Alchemist</a></h3>
+                    <h4>₹ 150 </h4>
+                    <span class="price-wrapper">₹300.00</span>
+                    <div class="discount-tag">50% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem2 col-lg-2 position-relative">
+                    <a href="#" class="divitem2book2" title="Rich Dad Poor Dad: 20th Anniversary Edition">
+                    <img src="Book25.png" alt="Image 2"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Rich Dad Poor Dad: 20th Anniversary Edition</a></h3><h4>₹ 150 </h4>
+                    <span class="price-wrapper">₹220.00</span>
+                    <div class="discount-tag">32% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem3 col-lg-2 position-relative">
+                    <a href="#" class="divitem3book3" title="It Starts With Us: A Novel ( paperback )">
+                    <img src="Book26.jpg" alt="Image 3"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Beyond the Story: 10-Year Record of BTS (Hardcover)</a></h3><h4>₹ 450 </h4>
+                    <span class="price-wrapper">₹ 1400.00</span>
+                    <div class="discount-tag">68% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem3 col-lg-2 position-relative">
+                    <a href="#" class="divitem3book3" title="Get Epic Shit Done (paperback)">
+                    <img src="Book14.jpg" alt="Image 3"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Ikigai: The Japanese secret to a long and happy life (hardcover)</a></h3><h4>₹ 160 </h4>
+                    <span class="price-wrapper">₹ 300.00</span>
+                    <div class="discount-tag">47% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem3 col-lg-2 position-relative">
+                    <a href="#" class="divitem3book3" title="The Secret By Rhonda Byrne">
+                    <img src="Book27.jpg" alt="Image 3"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Unfinished: By Priyanka Chopra Jonas</a></h3><h4>₹ 300 </h4>
+                    <span class="price-wrapper">₹ 540.00</span>
+                    <div class="discount-tag">32% off</div> <!-- Discount tag -->
+                </div></div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" data-bs-target="#carouse3" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark" style="height: 50px; width:50px;border-radius: 30px;"></span>
+        </button>
+        <button class="carousel-control-next" data-bs-target="#carouse3" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark"  style="height:50px;width:50px;border-radius:30px;"></span>
+        </button> 
+    </div>
+
+    <!-- For applying Fiction Books -->
+    <div class="mt-5 container" style="display: block;" id="section3">
+        <h2><span class="text-dark" style="font-family:Georgia,'Times New Roman', Times, serif; font-weight: bold;">Fiction</span></h2>
+    </div>
+    <div class="container">
+        <ul class="nav nav-underline lightdeal">
+            <li class="nav-item "><a href="#" class="nav-link active" style="color: #c17130;">Featured products</a></li>
+        </ul>
+    </div>
+    <div class="mt-5 container">
+        <div class="row">
+            <div class="divitem1 col-md-3 position-relative divitems">
+                <div class="featured-tag">Featured</div>
+                <a href="#" class="divitem1book1">
+                    <img src="Book28.jpg" alt="Image 1" class="image1">
+                    <img src="Book28back.jpg" alt="Image 2" class="image2"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">A Curse For True Love (paperback)</a></h3>
+                    <h4>₹ 180 </h4>
+                    <span class="price-wrapper">₹400.00</span>
+                </div>
+                <div class="divitem2 col-md-3 position-relative divitems">
+                    <div class="featured-tag">Featured</div>
+                    <a href="#" class="divitem2book2">
+                    <img src="Book29.jpg" alt="Image 2" class="image1">
+                    <img src="Book29back.jpg" alt="Image 2" class="image2"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">A Good Girl Guide To Murder – The Collection Of 3 Book-Set (paperback)</a></h3><h4>₹ 550 </h4>
+                    <span class="price-wrapper">₹900.00</span>
+                </div>
+                <div class="divitem3 col-md-3 position-relative divitems">
+                    <div class="featured-tag">Featured</div>
+                    <a href="#" class="divitem3book3">
+                    <img src="Book30.jpg" alt="Image 3" class="image1">
+                    <img src="Book30back.jpg" alt="Image 2" class="image2"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">A Little Life (papeback)</a></h3><h4>₹ 299 </h4>
+                    <span class="price-wrapper">₹ 450.00</span>
+                </div>
+                <div class="divitem2 col-md-2 position-relative divitems">
+                    <div class="featured-tag">Featured</div>
+                    <a href="#" class="divitem2book2">
+                        <img src="Book31.jpg" alt="Image 1" class="image1">
+                        <img src="Book31back.jpg" alt="Image 2" class="image2"></a>
+                        <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Haunting adeline and Hunting adeline</a></h3>
+                        <h4>₹ 450 </h4>
+                        <span class="price-wrapper">₹800.00</span>  
+                </div>
+        </div>      <!-- 1 row completed -->
+        <div class="mt-3 row">
+            <div class="divitem1 col-md-3 position-relative divitems">
+                <div class="featured-tag">Featured</div>
+                <a href="#" class="divitem1book1">
+                    <img src="Book32.jpg" alt="Image 1" class="image1">
+                    <img src="Book32back.jpg" alt="Image 2" class="image2">
+                </a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Bride – Ali hazelwood</a></h3>
+                    <h4>₹ 220 </h4>
+                    <span class="price-wrapper">₹450.00</span>
+                </div>
+                <div class="divitem2 col-md-3 position-relative divitems">
+                    <div class="featured-tag">Featured</div>
+                    <a href="#" class="divitem2book2">
+                    <img src="Book33.jpg" alt="Image 2" class="image1">
+                    <img src="Book33back.jpg" alt="Image 2" class="image2"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Coffee Series By Toshikazu Kawaguchi 4 Books collection Set</a></h3><h4>₹ 550 </h4>
+                    <span class="price-wrapper">₹1,220.00</span>
+                </div>
+                <div class="divitem3 col-md-3 position-relative divitems">
+                    <div class="featured-tag">Featured</div>
+                    <a href="#" class="divitem3book3">
+                    <img src="Book34.jpg" alt="Image 3" class="image1">
+                    <img src="Book34back.jpg" alt="Image 2" class="image2"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Fourth Wings - (paperback)</a></h3><h4>₹ 240 </h4>
+                    <span class="price-wrapper">₹ 600.00</span>
+                </div>
+                <div class="divitem2 col-md-2 position-relative divitems">
+                    <div class="featured-tag">Featured</div>
+                    <a href="#" class="divitem2book2">
+                        <img src="Book35.jpg" alt="Image 1" class="image1">
+                        <img src="Book35back.jpg" alt="Image 2" class="image2"></a>
+                        <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Heal Grow Love (paperback)</a></h3>
+                        <h4>₹ 180 </h4>
+                        <span class="price-wrapper">₹320.00</span>  
+                </div>
+        </div> 
+    </div>
+
+    <!-- For applying Non-Fiction Books -->
+    <div class="mt-5 container" style="display: block;" id="section4">
+        <h2><span class="text-dark" style="font-family:Georgia,'Times New Roman', Times, serif; font-weight: bold;">Non-Fiction</span></h2>
+    </div>
+    <div class="container">
+        <ul class="nav nav-underline lightdeal">
+            <li class="nav-item "><a href="#" class="nav-link active" style="color: #c17130;">Featured products</a></li>
+        </ul>
+    </div>
+    <div class="mt-5 container">
+        <div class="row">
+                <div class="divitem1 col-md-3 position-relative divitems">
+                <div class="featured-tag">Featured</div>
+                <a href="#" class="divitem1book1">
+                    <img src="Book36.jpg" alt="Image 1"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Becoming - Michelle obama (paperback)</a></h3>
+                    <h4>₹ 220 </h4>
+                    <span class="price-wrapper">₹600.00</span>
+                </div>
+                <div class="divitem2 col-md-3 position-relative divitems">
+                    <a href="#" class="divitem2book2">
+                    <img src="Book37.jpg" alt="Image 2"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">When breath becomes air</a></h3><h4>₹ 220 </h4>
+                    <span class="price-wrapper">₹499.00</span>
+                    <div class="discount-tag">56% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem3 col-md-3 position-relative divitems">
+                    <a href="#" class="divitem3book3">
+                    <img src="Book39.jpg" alt="Image 3"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Elon musk by walter isaacson (paperback)</a></h3><h4>₹ 250 </h4>
+                    <span class="price-wrapper">₹ 600.00</span>
+                    <div class="discount-tag">58% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem2 col-md-2 position-relative divitems">
+                    <div class="featured-tag">Featured</div>
+                    <a href="#" class="divitem2book2">
+                        <img src="Book38.jpg" alt="Image 1"></a>
+                        <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Doglapan: The Hard Truth about Life and Start-Ups (paperback)</a></h3>
+                        <h4>₹ 450 </h4>
+                        <span class="price-wrapper">₹800.00</span>  
+                </div>
+        </div>      <!-- 1 row completed -->
+        <div class="row">
+            <div class="divitem1 col-md-3 position-relative divitems">
+                <div class="featured-tag">Featured</div>
+                <a href="#" class="divitem1book1">
+                    <img src="Book40.jpg" alt="Image 1"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Deep work (paperback)</a></h3>
+                    <h4>₹ 180 </h4>
+                    <span class="price-wrapper">₹400.00</span>
+                </div>
+                <div class="divitem2 col-md-3 position-relative divitems">
+                    <a href="#" class="divitem2book2">
+                    <img src="Book41.jpg" alt="Image 2"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Do Epic Shit</a></h3><h4>₹ 160 </h4>
+                    <span class="price-wrapper">₹400.00</span>
+                    <div class="discount-tag">60% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem3 col-md-3 position-relative divitems">
+                    <a href="#" class="divitem3book3">
+                    <img src="Book42.jpg" alt="Image 3"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">I don't love you anymore: Moving on & Living Your Best Life (paperback)</a></h3><h4>₹ 160 </h4>
+                    <span class="price-wrapper">₹ 400.00</span>
+                    <div class="discount-tag">60% off</div> <!-- Discount tag -->
+                </div>
+                <div class="divitem2 col-md-2 position-relative divitems">
+                    <a href="#" class="divitem2book2">
+                        <img src="Book43.jpg" alt="Image 1"></a>
+                        <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Energize your mind (paperback) </a></h3>
+                        <h4>₹ 280 </h4>
+                        <span class="price-wrapper">₹700.00</span>
+                        <div class="discount-tag">55% off</div> <!-- Discount tag --> 
+                </div>
+        </div>
+        <div class="row">
+            <div class="divitem1 col-md-3 position-relative divitems">
+                <div class="featured-tag">Featured</div>
+                <a href="#" class="divitem1book1">
+                    <img src="Book44.jpg" alt="Image 1"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">The 33 strategies of WAR - Andy M. Paul(paperback)</a></h3>
+                    <h4>₹ 220 </h4>
+                    <span class="price-wrapper">₹400.00</span> 
+            </div>
+            <div class="divitem2 col-md-2 position-relative divitems">
+                <a href="#" class="divitem2book2">
+                    <img src="Book45.jpg" alt="Image 1"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">India, Bharat & Pakistan (paperback) </a></h3>
+                    <h4>₹ 280 </h4>
+                    <span class="price-wrapper">₹700.00</span>
+                    <div class="discount-tag">55% off</div> <!-- Discount tag --> 
+            </div>
+        </div>
+    </div>
+
+    <!-- For applying Young Adult Books -->
+    <div class="mt-5 container" style="display: block;" id="section5">
+        <h2>
+            <span class="text-dark" style="font-family:Georgia,'Times New Roman', Times, serif; font-weight: bold;">YA (Young Adult)</span>
+        </h2>
+    </div>
+    <div class="container">
+        <ul class="nav nav-underline lightdeal">
+            <li class="nav-item ">
+                <a href="#" class="nav-link active" style="color: #c17130;">Featured products</a>
+            </li>
+        </ul>
+    </div>
+    <div class="mt-5 container">
+        <div class="row">
+            <div class="divitem1 col-md-3 position-relative divitems">
+                <a href="#" class="divitem1book1">
+                    <img src="Book46.jpg" alt="Image 1">
+                    <div class="sale-tag">Sale</div>
+                </a>
+                <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">And I love You The Most (paperback)</a></h3>
+                <h4>₹ 399 </h4>
+                <span class="price-wrapper">₹899.00    </span>
+                <span class="text-danger">Save Rs. 500</span>
+            </div>
+            <div class="divitem2 col-md-3 position-relative divitems">
+                <a href="#" class="divitem2book2">
+                <img src="Book47.jpg" alt="Image 2"><div class="sale-tag">Sale</div></a>
+                <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Savage Bonds : 2 (The Bonds That Tie) (paperback)</a></h3><h4>₹ 599 </h4>
+                <span class="price-wrapper">₹999.00</span>
+                <span class="text-danger">Save Rs. 400</span>
+            </div>
+            <div class="divitem3 col-md-3 position-relative divitems">
+                <a href="#" class="divitem3book3">
+                <img src="Book48.jpg" alt="Image 3"><div class="sale-tag">Sale</div></a>
+                <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Two Twisted Crowns (paperback)</a></h3><h4>₹ 299 </h4>
+                <span class="price-wrapper">₹ 599.00</span>
+                <span class="text-danger">Save Rs. 300</span>
+            </div>
+            <div class="divitem2 col-md-2 position-relative divitems">
+                <div class="featured-tag">Featured</div>
+                <a href="#" class="divitem2book2">
+                <img src="Book49.jpg" alt="Image 1"><div class="sale-tag">Sale</div></a>
+                <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">The Dead Romantics (paperback)</a></h3>
+                <h4>₹ 319 </h4>
+                <span class="price-wrapper">₹699.00</span> 
+                <span class="text-danger">Save Rs. 380</span>
+            </div>
+        </div>      <!-- 1 row completed -->
+        <div class="row">
+            <div class="divitem1 col-md-3 position-relative divitems">
+                <div class="featured-tag">Featured</div>
+                <a href="#" class="divitem1book1">
+                <img src="Book50.jpg" alt="Image 1"><div class="sale-tag">Sale</div></a>
+                <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Mr. Wrong Number: TikTok Made me Buy It!(paperback)</a></h3>
+                <h4>₹ 249 </h4>
+                <span class="price-wrapper">₹450.00</span>
+                <span class="text-danger">Save Rs. 201</span>
+            </div>
+            <div class="divitem2 col-md-3 position-relative divitems">
+                <div class="featured-tag">Featured</div>
+                <a href="#" class="divitem2book2">
+                <img src="Book51.jpg" alt="Image 2"><div class="sale-tag">Sale</div></a>
+                <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">The Love Wager</a></h3><h4>₹ 500 </h4>
+                <span class="price-wrapper">₹800.00</span>
+            </div>
+            <div class="divitem3 col-md-3 position-relative divitems">
+                <a href="#" class="divitem3book3">
+                <img src="Book52.jpg" alt="Image 3"><div class="sale-tag">Sale</div></a>
+                <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Book Lovers (paperback)</a></h3><h4>₹ 150 </h4>
+                <span class="price-wrapper">₹ 500.00</span>
+                <span class="text-danger">Save Rs. 201</span>
+            </div>
+            <div class="divitem2 col-md-2 position-relative divitems">
+                <a href="#" class="divitem2book2">
+                <img src="Book53.jpg" alt="Image 1"><div class="sale-tag">Sale</div></a>
+                <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Today Tonight Tomorrow  </a></h3>
+                <h4>₹ 280 </h4>
+                <span class="price-wrapper">₹700.00</span>
+                <span class="text-danger">Save Rs. 201</span>
+            </div>
+        </div>        <!-- 2- row completed -->
+        <div class="mt-5 row">
+            <div class="divitem1 col-md-3 position-relative divitems">
+                <div class="featured-tag">Featured</div>
+                <a href="#" class="divitem1book1">
+                <img src="Book54.jpg" alt="Image 1"><div class="sale-tag">Sale</div></a>
+                <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">The Do Over </a></h3>
+                <h4>₹ 220 </h4>
+                <span class="price-wrapper">₹400.00</span>
+                <span class="text-danger">Save Rs. 201</span>
+            </div>
+            <div class="divitem2 col-md-3 position-relative divitems">
+                <div class="featured-tag">Featured</div>
+                <a href="#" class="divitem2book2">
+                <img src="Book55.jpg" alt="Image 1"><div class="sale-tag">Sale</div></a>
+                <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Better Than The Movies - By Lynn Painter (paperback) </a></h3>
+                <h4>₹ 280 </h4>
+                <span class="price-wrapper">₹700.00</span>
+                <span class="text-danger">Save Rs. 201</span>
+            </div>
+            <div class="divitem3 col-md-3 position-relative divitems">
+                <a href="#" class="divitem3book3">
+                <img src="Book56.jpg" alt="Image 3"><div class="sale-tag">Sale</div></a>
+                <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Betting On You (paperback)</a></h3><h4>₹ 160 </h4>
+                <span class="price-wrapper">₹ 400.00</span>
+                <span class="text-danger">Save Rs. 201</span>
+            </div>
+            <div class="divitem3 col-md-2 position-relative divitems">
+                <a href="#" class="divitem3book3">
+                <img src="Book57.jpg" alt="Image 3"><div class="sale-tag">Sale</div></a>
+                <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">The American Roommate Experiment</a></h3><h4>₹ 300 </h4>
+                <span class="price-wrapper">₹ 400.00</span>
+                <span class="text-danger">Save Rs. 101</span>
+            </div>
+        </div>               <!-- third- row completed -->
+    </div>
+
+    <!-- For Applying Kids Books -->
+    <div class="mt-5 container" style="display: block;" id="section6">
+        <h2>
+            <span class="text-dark" style="font-family:Georgia,'Times New Roman', Times, serif; font-weight: bold;">Kids Books<span>
+        <h2>
+    </div>
+    <div class="container">
+        <ul class="nav nav-underline lightdeal">
+            <li class="nav-item ">
+                <a href="#" class="nav-link active" style="color: #c17130;">Featured products</a>
+            </li>
+        </ul>
+    </div>
+    <div id="carouse4" class="carousel slide" data-bs-ride="carousel" style="padding: 100px;">
+        <div class="carousel-inner">
+            <div class="carousel-item active slides">
+                <div class="row">
+                <div class="divitem1 col-md-3 position-relative divitems">
+                    <a href="#" class="divitem1book1">
+                        <img src="Book58.jpg" alt="Image 1"></a>
+                    <h3 id="underhover">
+                        <a href="#" style="color: #ff3201; font-size: 16px;">Diary Of a Wimpy Kid: No Brainer (Book 18)( paperback )</a></h3>
+                    <h4>₹ 199 </h4>
+                    <span class="price-wrapper">₹499.00</span>
+                </div>
+                <div class="divitem2 col-md-3 position-relative divitems">
+                    <a href="#" class="divitem2book2">
+                    <img src="Book59.png" alt="Image 2"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Percy Jackson and the Olympians: the Chalins of the Gods ( paperback )</a></h3><h4>₹ 319 </h4>
+                    <span class="price-wrapper">₹599.00</span>
+                </div>
+                <div class="divitem3 col-md-3 position-relative divitems">
+                    <a href="#" class="divitem3book3">
+                    <img src="Book60.jpg" alt="Image 3"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">101 Brain Booster Activities Book( paperback )</a></h3><h4>₹ 236 </h4>
+                    <span class="price-wrapper">₹ 295.00</span>
+                </div>
+                <div class="divitem3 col-md-2 position-relative divitems">
+                    <a href="#" class="divitem3book3">
+                    <img src="Book61.jpg" alt="Image 3"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Phonics workbook Level-1 </a></h3><h4>₹ 156 </h4>
+                    <span class="price-wrapper">₹ 195.00</span>
+                </div>
+                </div>     <!-- 1 slide completed -->
+            </div>
+            <div class="carousel-item slides">
+                <div class="row">
+                <div class="divitem1 col-md-3 position-relative divitems">
+                    <a href="#" class="divitem1book1">
+                    <img src="Book63.jpg" alt="Image 1"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Science workbook Level-2( paperback )</a></h3>
+                    <h4>₹ 199 </h4>
+                    <span class="price-wrapper">₹499.00</span>
+                </div>
+                <div class="divitem2 col-md-3 position-relative divitems">
+                    <a href="#" class="divitem2book2">
+                    <img src="Book64.jpg" alt="Image 2"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Science workbook Level-3</a></h3><h4>₹ 319 </h4>
+                    <span class="price-wrapper">₹599.00</span>
+                </div>
+                <div class="divitem3 col-md-3 position-relative divitems">
+                    <a href="#" class="divitem3book3">
+                    <img src="Book65.jpg" alt="Image 3"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Science workbook Level-5</a></h3><h4>₹ 236 </h4>
+                    <span class="price-wrapper">₹ 295.00</span>
+                </div>
+                <div class="divitem3 col-md-2 position-relative divitems">
+                    <a href="#" class="divitem3book3">
+                    <img src="Book66.jpg" alt="Image 3"></a>
+                    <h3 id="underhover"><a href="#" style="color: #ff3201; font-size: 16px;">Science workbook Level-6</a></h3><h4>₹ 156 </h4>
+                    <span class="price-wrapper">₹ 196.00</span>
+                </div>
+            </div></div>     <!-- second slide completed -->
+        </div>
+        <button class="carousel-control-prev" data-bs-target="#carouse4" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark" style="height: 50px; width:50px;border-radius: 30px;"></span>
+        </button>
+        <button class="carousel-control-next" data-bs-target="#carouse4" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark"  style="height:50px;width:50px;border-radius:30px;"></span>
+        </button> 
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 footer-section">
+                    <h3>Contact</h3>
+                    <h5><a href="#">bookseekers11@gmail.com</a></h5>
+                    <h4 class="text-secondary">+91 93-547-97-123</h4>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-section">
+                    <h3>About</h3>
+                    <a href="#"><h5>Terms & Conditions</h5></a>
+                    <a href="#"><h5>Privacy Policy</h5></a>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-section">
+                    <h3>Help & Guide</h3>
+                    <a href="#"><h5>Inquiry</h5></a>
+                    <a href="#"><h5>Refund Policy</h5></a>
+                    <a href="#"><h5>Shipping Policy</h5></a>
+                    <a href="#"><h5>Cancel Order</h5></a>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-section">
+                    <h3>Follow Us</h3>
+                    <h5><a href="www.instagram.com">Instagram</a></h5>
+                    <h5><a href="https://www.facebook.com/seekershome/">Facebook</a></h5>
+                    <h5><a href="https://twitter.com/">Twitter</a></h5>
+                    <h5><a href="https://www.pinterest.com/bookseekers/">Pinterest</a></h5>
+                </div>
+            </div>
+            <div class="row footer-bottom">
+                <div class="col-md-12">
+                    <hr>
+                    <span class="text-secondary">© 2024 The Book Seekers. All Rights Reserved. Proudly Designed By Rumesha Ansari</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+</body>
+</html>

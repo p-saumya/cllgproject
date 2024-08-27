@@ -1,0 +1,288 @@
+    /* For Moving Horizontal Content (First Line) */
+    #announcement-container {
+        width: 100%;
+        height: 35px;
+        background-color: #f9cdb3;
+        overflow: hidden; /* Ensure contents do not overflow horizontally */
+        white-space: nowrap; /* Prevent content wrapping */
+    }
+
+    .announcement {
+        display: inline-block;
+        margin-right: 60px; /* Increased space between content */
+        font-family: recoleta;
+        font-size: large;
+        color: #c17130;
+    }
+
+    /* Define keyframes to animate scrolling */
+    @keyframes scroll {
+        0% {
+            transform: translateX(10%); /* Start from the left */
+        }
+        100% {
+            transform: translateX(-20%); /* End at the left */
+        }
+    }
+
+    /* Apply animation to the content container */
+    #announcement-content {
+        display: inline-block;
+        white-space: nowrap; /* Prevent content wrapping */
+        animation: scroll 10s linear infinite; /* Apply animation to content container */
+    }
+
+
+
+    /*Apply search bar options */
+    .control.is-expanded{
+        font-family: IBM Plex Sans;
+        color: #2c293b;
+        flex-grow:1;
+        flex-shrink: 1;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 16px;
+        padding-right: 40px;
+        border-radius: 60px;
+        width: 500px;
+        overflow: visible;
+    }
+
+
+    /* New class to make the div fixed when scrolled down */
+    .fixed-on-scroll {
+        position: sticky;
+        top: 0;
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.8);
+        z-index: 1000;
+        transition: top 0.3s; /* Smooth transition */ 
+    }
+    .fixed-on-scroll .navbar{
+        z-index: 1100;
+        position: sticky;
+        transition: 0.3s;
+        top: 20px;
+    }
+
+
+
+    /*Apply navbar css */
+    .navbar-nav .nav-link {
+        font-family: IBM Plex Sans, sans-serif;
+        font-size: 20px; /* Increased font size */
+        position: relative;
+    }
+    .navbar-nav .nav-link:hover::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px; /* Red underline position */
+        width: 100%;
+        height: 3px;
+        background-color: #c17130; /* Red underline color */
+    }
+    .navbar-nav .nav-item:hover .nav-link{
+        font-weight: bold;
+        font-size: 20px;
+        font-family: IBM Plex Sans, sans-serif;
+    }
+    /* Adjust navbar height */
+    .navbar {
+        padding: 0; /* Remove default padding */
+        height: auto !important; /* Reset height to auto */
+        border: 2px double #c17130;
+        position:relative;
+    }
+    .navmain {
+        padding-top: 0; /* Remove default padding */
+    }
+
+
+    /*Apply carousel slides to image and div */
+    .slides a > img{
+        display: flex;
+        flex-shrink: 0;
+        width: 100%;
+        height: 480px;
+    }
+    .slides a > div{
+        scroll-snap-type: x mandatory;
+        scroll-snap-align: start;
+        scroll-behavior: smooth;
+        display: flex;
+        overflow-x: auto;
+        overflow-x: auto;
+    }
+    .carousel .carousel-indicators li{
+        border-radius: 50%;
+        height: 12px;
+        width: 12px;
+        background-color: #404040;
+    }
+
+
+    /*Apply css to lightdeals-featured products*/
+    .lightdeal > li {
+        width: 50%;
+        height: 2px;
+        bottom: -1px;
+        white-space: nowrap;
+        font-size: large;
+    }
+
+
+    /*Apply css to lightdeals images*/
+    .divitem1{
+        margin-left: 20px;
+    }
+    .divitem1 > .divitem1book1 > img{
+        height: 300px;
+        width: 280px;
+    }
+    .price-wrapper{
+        text-decoration: line-through rgb(21, 1, 1);
+        text-shadow: #2c293b;
+        color: gray;
+    }
+    .divitem2 > .divitem2book2 > img{
+        height: 300px;
+        width: 280px;
+    }
+    .divitem3 > .divitem3book3 > img{
+        height: 300px;
+        width: 280px;
+    }
+    .discount-tag {
+        position: absolute;
+        top: 0;
+        right: 75px;
+        background-color: #ff3201;
+        color: white;
+        padding: 5px 10px;
+        font-size: 15px;
+        border-radius: 5px;
+    }
+
+    /*Applying hover effect to books title */
+    #underhover:hover {
+        text-decoration: underline;
+        color: #ff3201;
+    }
+
+    /*Applying featured tag in fiction */
+    .position-relative {
+        position: relative;
+    }
+    .featured-tag {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #ffcc00; /* Yellow background color */
+        color: #ffffff; /* White text color */
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        transition: opacity 0.3s ease-in-out; /* Add transition effect */
+    }
+
+
+    /* Applying second image to fiction div */
+    .image2 {
+        display: none; /* Initially hide the second image */
+        transition: opacity 0.5s ease-in-out; /* Add transition effect */
+    }
+    .divitems:hover .image1 {
+        display: none; /* Hide the first image when hovering over the book item */
+    }
+    .divitems:hover .image2 {
+        display: block; /* Display the second image when hovering over the book item */
+        opacity: 1;
+    }
+
+    
+
+
+    /* for applying sale tag on ya books */
+    .sale-tag {
+        position: absolute;
+        margin-top: -25px;
+        background-color: orangered;
+        padding: 5px 10px;
+        border-radius: 0px;
+        color: white;
+        font-weight: bold;
+    }
+
+
+   /* Custom CSS for the footer */
+   .footer  {
+    background-color: black;
+    text-align: center;
+    color: #fff;
+    padding: 20px 0; /* Adjust padding to be responsive */
+    }
+    .footer-bottom {
+        margin-top: 20px; /* Add some spacing between content and bottom */
+    }
+    .footer-section {
+        padding: 20px; /* Add padding to the sections for spacing */
+    }
+    .footer-section h3 {
+        font-weight: bold;
+        color: whitesmoke;
+    }
+    .footer-section a {
+        text-decoration: none;
+        color: rgb(161, 149, 153);
+    }
+
+
+    /* Styles for the back to top button */
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background-color: #0f263e;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 24px;
+        text-align: center;
+        line-height: 50px;
+        z-index: 99;
+        display: none;
+    }
+
+    .back-to-top:hover {
+        background-color: #06121f;
+    }
+
+    /* Show the back to top button when the target anchor is focused */
+    /* #top:focus + .back-to-top {
+        display: block;
+    } */
+
+
+    /* For CSS of Profile Logo */
+    .profile-initials {
+        font-size: 20px; /* Adjust the font size as needed */
+        width: 40px; /* Adjust the width of the initials container */
+        height: 40px; /* Adjust the height of the initials container */
+        background-color: #333; /* Background color */
+        color: #fff; /* Text color */
+        border-radius: 50%; /* Make it circular */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute; /* Position the initials inside the profile link */
+        top: 80px; /* Align to the top */
+        right: 150px; /* Align to the right */
+        transform: translate(50%, -50%); /* Center the initials */
+        
+    }

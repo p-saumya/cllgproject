@@ -1,0 +1,255 @@
+
+body{
+    overflow-x: hidden;
+}
+.navbar-nav .nav-link{
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: medium;
+    z-index: 2000;
+}
+.navbar-nav .nav-link:hover {
+    background-color: brown;
+    color: white; 
+}
+.categories{
+    background-color: rgb(196, 79, 37);
+    height:60px;
+    margin: 0;
+    padding: 0;
+    z-index: 100;
+}
+.navbar {
+    height: 60px; 
+}
+.mainnav a:hover {
+    color: rgb(200, 104, 53) !important;
+    z-index: 1000;
+}
+
+
+
+/* Style the dropdown menu container */
+.dropdown-menu {
+    background-color: #fff; 
+    border: 1px solid #ccc; 
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1); /* Add shadow */
+    transform: translateY(-5px); /* Move dropdown up */
+    transition: opacity 0.3s, transform 0.3s; 
+}
+.dropdown-menu li {
+    padding: 10px; /* Add padding */
+}
+.dropdown-menu li a:hover {
+    color: rgb(213, 124, 91); /* Set text color */
+    text-decoration: none; /* Remove underline */
+}
+.dropdown-menu li:hover{
+    border: 2px solid #862121;
+}
+@media (max-width: 575px) {
+    .navbar-nav {
+        z-index: 100; /* Increase z-index to make sure the collapsed navbar appears above other elements */
+    }
+}
+
+
+
+
+.discount-tag {
+    position: absolute;
+    top: 0px;
+    left: 425px;
+    background-color: #ff3201;
+    color: white;
+    padding: 5px 10px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+/* FOr star reviews  */
+.star-rating input[type="radio"] {
+    display: none;
+}
+.star-rating label {
+    color: #FFD700;
+    font-size: 25px;
+    cursor: pointer;
+}
+.star-rating a:hover{
+    color: red !important;
+}
+
+/* for the insta,fb,twit,pint logo images */
+.adjustimage{
+    height: 35px;
+    width: 30px;
+    text-decoration: none;
+    padding: 2px;
+}
+#lines{
+    text-decoration: none;
+    padding: 25px;
+}
+
+.price-wrapper{
+    text-decoration: line-through rgb(21, 1, 1);
+    text-shadow: #2c293b;
+    color: gray;
+}
+
+
+
+
+.quantity-box {
+display: flex;
+align-items: center;
+margin-left: 25px;
+}
+
+.quantity-input {
+width: 75px;
+height: 50px;
+text-align: center;
+border-radius: 0%;
+border-top: 1px solid black;
+border-bottom: 1px solid black;
+font-weight: bold;
+}
+
+.quantity-btn {
+height: 50px;
+border-radius: 3px;
+border: 1px solid black;
+}
+.quantity-btn:hover {
+    border: 1px solid black;
+    background-color: #ff3201;
+}
+
+.add-to-cart{
+    height: 50px;
+    width: 170px;
+    margin-left: 25px;
+    font-weight: bold;
+    color: #ff3201;
+    border-color: #ff3201;
+}
+.add-to-cart:hover{
+    background: #ff3201;
+    color: white;
+    transition: 1s ;
+}
+
+.buy-noew{
+    height: 50px;
+    width: 170px;
+    margin-left: 25px;
+    background-color: #ff3201;
+    color: white;
+    font-weight: bold;
+    border-color: #ff3201;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background: #ff3201;
+    border-radius: 5px;
+}
+
+.horizontal-rule{
+    border-top: 1px solid black;
+    margin: 10px 0px;
+    margin-top: 50px;
+}
+
+/* Custom CSS for the footer */
+.footer  {
+    background-color: black;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    padding: 20px ;
+    height: 300px;
+}
+
+/* Add padding to the left side of the details section */
+.col-xl-3 {
+    padding: 20px;
+}
+
+
+@media (max-width: 992px) {
+    .col-xl-3 {
+        flex: 0 0 100%; /* Allow the column to occupy full width on smaller screens */
+        max-width: 100%; /* Set maximum width to 100% */
+        margin-bottom: 20px; /* Add some margin bottom for spacing */
+    }
+}
+
+.col-xl-12{
+    padding-left: 20px;
+}
+
+.col-xl-5{
+    padding-left: 20px;
+}
+
+    /* Style for modal content */
+    .modal-content {
+        background-color: #f8f9fa; /* Light gray background */
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        transition: all 0.3s ease; /* Add transition for all properties */
+    }
+
+    /* Style for modal header */
+    .modal-header {
+        background-color: #4f9a0e; /* Blue header */
+        color: white; /* White text */
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    /* Style for modal body */
+    .modal-body {
+        padding: 20px;
+    }
+
+    /* Style for modal footer */
+    .modal-footer {
+        border-top: none; /* Remove top border */
+    }
+
+    /* Style for quantity label */
+    .form-label {
+        font-weight: bold;
+    }
+
+    /* Style for buy now button */
+    .btn-primary {
+        background-color: #28a745; /* Green button */
+        border-color: #28a745;
+    }
+
+    /* Style for close button */
+    .btn-close {
+        color: white; /* White close button */
+    }
+
+     /* Custom CSS for total price and book name */
+     #cartBookName {
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-size: large;
+    }
+
+    #cartTotalPrice {
+        color: #ff3201;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
